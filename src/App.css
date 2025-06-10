@@ -1,9 +1,36 @@
-
 /* CSS Custom Properties (Variables) */
 :root {
   --background-color: #ffffff;
   --primary-color: #606c38;
   --secodary-color: #dda15e;
+}
+
+/* PWA specific styling */
+@media (display-mode: standalone) {
+  .app {
+    padding-top: max(env(safe-area-inset-top), 0px);
+    padding-bottom: max(env(safe-area-inset-bottom), 0px);
+  }
+  
+  .app-header {
+    padding-top: calc(2rem + max(env(safe-area-inset-top), 0px));
+  }
+}
+
+/* Prevent zoom on input focus (iOS) */
+input[type="text"] {
+  font-size: 16px !important;
+  transform: translateZ(0);
+}
+
+/* Touch-friendly button sizing */
+@media (max-width: 768px) {
+  .calculate-btn,
+  .clear-btn {
+    min-height: 44px;
+    font-size: 1.1rem;
+    touch-action: manipulation;
+  }
 }
 
 .app {
@@ -93,6 +120,7 @@
 
 .input-group input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .input-group input:focus {
